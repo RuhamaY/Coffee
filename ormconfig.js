@@ -7,8 +7,8 @@ const AppDataSource = new DataSource({
     username: 'postgres',
     password: 'postgres',
     database: 'postgres',
-    entities: ['dist/coffees/entities/*.js'], // Updated path
-    migrations: ['dist/migrations/*.js'], // Assuming migrations are here after compilation
+    entities: ['dist/coffees/entities/*.js'], 
+    migrations: ['dist/migrations/*.js'],
     cli: {
         migrationsDir: 'src/migrations',
     },
