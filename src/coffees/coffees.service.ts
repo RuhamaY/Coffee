@@ -7,7 +7,6 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Flavor } from './entities/flavor.entity';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Event } from 'src/events/entities/event.entity';
-import { COFFEE_BRANDS } from './coffees.constants';
 
 
 @Injectable({scope: Scope.REQUEST})
@@ -23,10 +22,7 @@ export class CoffeesService {
 
         private readonly dataSource: DataSource,
 
-        @Inject(COFFEE_BRANDS) CoffeeBrands: string[],
-    ) {
-        console.log('coffeesService instantiated');
-    }
+    ) {}
 
     findAll(paginationQuery: PaginationQueryDto) {
         const { limit, offset } = paginationQuery;
