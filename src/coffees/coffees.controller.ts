@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Inject, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -16,6 +16,7 @@ export class CoffeesController {
         console.log('CoffesController created');
     }
 
+    @UsePipes(ValidationPipe)
     @Get()
     findAll(@Query() paginationQuery: PaginationQueryDto){
         return this.coffeesService.findAll(paginationQuery);
