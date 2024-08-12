@@ -10,11 +10,9 @@ import appConfig from './config/app.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      load:[appConfig]
-    }), 
-    CoffeesModule, 
-    TypeOrmModule.forRoot({
+
+    TypeOrmModule.forRootAsync({
+      useFactory: ()=> ({
       type: 'postgres',
       host: process.env.DATABASE_HOST,
       port: +process.env.DATABASE_PORT,
@@ -23,7 +21,13 @@ import appConfig from './config/app.config';
       database: process.env.DATABASE_NAME,
       autoLoadEntities: true,
       synchronize:true,
+      })
     }),
+    ConfigModule.forRoot({
+      load:[appConfig]
+    }), 
+    CoffeesModule, 
+    
     CoffeeRatingModule, ],
   controllers: [AppController],
   providers: [AppService],
