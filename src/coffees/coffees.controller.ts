@@ -13,9 +13,7 @@ export class CoffeesController {
     constructor(
         private readonly coffeesService: CoffeesService,
         @Inject(REQUEST) private readonly request: Request,
-    ){
-        console.log('CoffesController created');
-    }
+    ){}
 
     @Public()
     @Get()

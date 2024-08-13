@@ -7,7 +7,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Flavor } from './entities/flavor.entity';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Event } from 'src/events/entities/event.entity';
-import { ConfigService, ConfigType } from '@nestjs/config';
+import { ConfigType } from '@nestjs/config';
 import coffeesConfig from './config/coffees.config';
 
 
@@ -27,9 +27,7 @@ export class CoffeesService {
         @Inject(coffeesConfig.KEY)
         private readonly coffeesConfiguration: ConfigType<typeof coffeesConfig>,
 
-    ) {
-        console.log(coffeesConfiguration.foo);
-    }
+    ) {}
 
     findAll(paginationQuery: PaginationQueryDto) {
         const { limit, offset } = paginationQuery;
