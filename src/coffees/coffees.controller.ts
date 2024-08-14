@@ -6,13 +6,14 @@ import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
+import { ApiForbiddenResponse, ApiResponse } from '@nestjs/swagger';
 
 @Controller('coffees')
 export class CoffeesController {
 
-    constructor(
-        private readonly coffeesService: CoffeesService){}
+    constructor(private readonly coffeesService: CoffeesService){}
 
+    @ApiForbiddenResponse({description: 'Forbidden.'})
     @Public()
     @Get()
     async findAll(
